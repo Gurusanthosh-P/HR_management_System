@@ -1,0 +1,47 @@
+<app-dashboard></app-dashboard>
+<div class="btn">
+    <p-toast></p-toast>
+    <p-menu #menu [model]="lists" [popup]="true"></p-menu>
+    <button pButton type="button" (click)="menu.toggle($event)" icon="pi pi-sort" label="Sort"></button>    
+</div>
+
+<div class="Usercard" *ngFor="let userdetails of userDataArray">
+        <p-card header="{{userdetails.name}}" 
+        subheader="{{userdetails.designation}}" 
+        (click)=showDescription(userdetails.name)>
+            <ng-template pTemplate="header">
+                <img src="{{userdetails.image}}" alt="image">
+            </ng-template>
+            <ng-template pTemplate="content" class="request">
+            <span [ngClass]="{  'accept-status': userdetails.status === 'approved',
+                                'request-status': userdetails.status === 'request',
+                                'reject-status': userdetails.status === 'denied' }">
+                <i *ngIf="userdetails.status === 'request'" class="pi pi-spin pi-spinner"></i>
+                <i *ngIf="userdetails.status === 'approved'" class="pi pi-check-circle"></i>
+                <i *ngIf="userdetails.status === 'denied'" class="pi pi-times-circle"></i>
+                {{ userdetails.status }}
+            </span>
+            <br><br>
+            <span>Applied date: {{ epochToNormalTime(userdetails.date) }}</span>
+
+            </ng-template>
+        </p-card>
+        <p-scrollTop  [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+
+
+
+        <!-- <p-card header="{{userdetails.name}}" 
+        *ngIf="userdetails.status==='reject'" 
+        [ngClass]="{ 'disabled-card': userdetails.status === 'reject' }"
+        subheader="{{userdetails.designation}}" >
+        <ng-template pTemplate="header">
+                <img src="{{userdetails.image}}" alt="image">
+            </ng-template><br>
+        </p-card> -->
+</div>
+
+
+
+<div class="error">
+    <h1>{{APIError}}</h1>
+</div>

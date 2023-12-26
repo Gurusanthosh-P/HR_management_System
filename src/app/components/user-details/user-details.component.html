@@ -1,0 +1,53 @@
+<div class="resume" *ngFor="let userdetails of showUserDetails">
+    <div class="nav">
+        <p-card >
+            <ng-template pTemplate="content">
+                <div class="custom-header" >{{userdetails.name}}</div>
+                <div class="custom-subheader">{{userdetails.designation}}</div><br>
+                <span>{{userdetails.coverletter}}</span>
+            </ng-template>
+        </p-card>
+
+        <div class="img">
+            <img src="{{userdetails.image}}" alt="image">
+        </div>
+    </div>
+
+    <div class="info">
+            <div class="contactsInfo" >
+                <h3>Contacts</h3>
+                <span>Ph No:   {{userdetails.phoneno}}</span>
+                <span>Email:  {{userdetails.mail}}</span>
+            </div>
+       
+        <div class="personalInfo">
+            <h3>Personal Info</h3>
+            <span>DOB: {{userdetails.dob}}</span>
+            <span>Age: {{userdetails.age}}</span>
+            <span>Gender: {{userdetails.gender}}</span>
+            <span>Place: {{userdetails.place}}</span>
+        </div>
+        <div class="educationInfo">
+            <h3>Education</h3>
+            <span>Qualification: {{userdetails.qualification}}</span>
+            <span>Designation: {{userdetails.designation}}</span>
+            <span>Experience: {{userdetails.experience}}</span>
+        </div>
+        <div class="applicationDate">
+            <h3>Job Applied Date</h3>
+            <span> Date:{{epochToNormalTime(userdetails.date)}}</span>
+        </div>     
+    </div>
+
+    <div class="button">
+        <p-toast  [showTransformOptions]="'translateX(-1000%)'" [showTransitionOptions]="'100ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateY(100%)'"></p-toast>
+        <button type="button" *ngIf="userdetails.status=='request'" pButton pRipple (click)="reject(userdetails.id)" label="Denied" class="p-button-success denied"></button>
+        
+        <p-toast  [showTransformOptions]="'translateX(-100%)'" [showTransitionOptions]="'100ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateY(100%)'"></p-toast>
+        <button type="button" *ngIf="userdetails.status=='request'" pButton pRipple (click)="accept(userdetails.id)" label="Approved" class="p-button-success"></button>
+    </div>
+</div>
+
+<div class="error">
+    <h1>{{APIError}}</h1>
+</div>

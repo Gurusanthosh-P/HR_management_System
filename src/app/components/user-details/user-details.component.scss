@@ -1,0 +1,72 @@
+.resume{
+    border: 1px solid whitesmoke;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    width: 90%;
+    margin:40px 0px 20px 62px;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.3);
+}
+
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+    img{
+        height: 225px;
+    }
+    p-card{
+        width: 550px;
+        text-align: center;
+        .custom-header {
+            font-size: 50px;
+            color: black;
+          }
+          
+          .custom-subheader {
+            font-size: 18px; 
+            color: #1b1b1b; 
+          }
+
+          span{
+            color: black;
+          }
+    }
+}
+
+.info{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 30px;
+    h3{
+        font-size: 18px;
+    }
+
+    span{
+        margin-top: 20px;
+        font-size: 17px;
+        display: flex;
+
+    }
+
+}
+
+.button
+{
+    text-align: right;
+    button{
+        padding: 10px;
+        margin-left: 20px;
+        border-color: transparent;
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.3);
+        color: rgb(255, 255, 255);
+        font-weight: bolder;
+    }
+    .denied{
+        background-color: rgb(225, 90, 90);
+    }
+}
+
+.error{
+    text-align: center;
+    margin-top: 50px;
+}
